@@ -13,3 +13,10 @@ RUN unzip hg19.3.zip
 RUN rm hg19.1.zip hg19.2.zip hg19.3.zip
 
 ENV PATH="/index_hg19:$PATH"
+
+WORKDIR /NGStools/renamePE_samtools
+
+RUN wget https://raw.githubusercontent.com/miguelpmachado/pythonScripts/master/renamePE_samtoolsFASTQ.py
+RUN chmod +x renamePE_samtoolsFASTQ.py
+
+ENV PATH="NGStools/renamePE_samtools:$PATH"
