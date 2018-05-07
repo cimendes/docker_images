@@ -45,11 +45,6 @@ RUN wget https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.3.2/bowtie2
 	ln -s /NGStools/bowtie2-2.3.2/bowtie2* /NGStools/MIDAS-1.3.2/bin/Linux/ && \
 	ln -s /NGStools/bowtie2-2.3.2/bowtie2* /usr/local/bin/
 
-# MIDAS DB v1.2
-WORKDIR /MidasDB
-RUN wget http://lighthouse.ucsf.edu/MIDAS/midas_db_v1.2.tar.gz && tar xf midas_db_v1.2.tar.gz && rm midas_db_v1.2.tar.gz
-
-
 ENV PYTHONPATH="/NGStools/MIDAS-1.3.2:${PYTHONPATH}" PATH="/NGStools/MIDAS-1.3.2/scripts:/NGStools/hmmer-3.1b2-linux-intel-x86_64/binaries:/NGStools/vsearch-2.4.3-linux-x86_64/bin:${PATH}"
 
 # Clean
