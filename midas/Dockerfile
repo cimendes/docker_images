@@ -6,8 +6,9 @@ WORKDIR /NGStools/
 RUN apt-get update
 
 # Dependencies
-RUN apt-get install -y git python-dev python-pip wget unzip bats awscli curl zlib1g-dev libbz2-dev liblzma-dev libcurl4-openssl-dev libssl1.0.0 \
-	libssl-dev libtbb-dev g++ && pip install -U numpy biopython pysam pandas
+RUN apt-get install -y git python2.7 python-dev python-pip wget unzip bats awscli curl zlib1g-dev libbz2-dev \
+    liblzma-dev libcurl4-openssl-dev libssl1.0.0 libssl-dev libtbb-dev g++ && pip install -U pandas==0.20.3 \
+    biopython==1.70 numpy==1.13.1 scipy==0.19.1 awscli==1.11.146 boto3==1.4.7 pysam==0.13
 
 # HMMER
 RUN wget http://eddylab.org/software/hmmer3/3.1b2/hmmer-3.1b2-linux-intel-x86_64.tar.gz && tar xf hmmer-3.1b2-linux-intel-x86_64.tar.gz && rm hmmer-3.1b2-linux-intel-x86_64.tar.gz
