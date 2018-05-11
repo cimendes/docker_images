@@ -46,7 +46,8 @@ RUN wget https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.3.2/bowtie2
 	ln -s /NGStools/bowtie2-2.3.2/bowtie2* /NGStools/MIDAS-1.3.2/bin/Linux/ && \
 	ln -s /NGStools/bowtie2-2.3.2/bowtie2* /usr/local/bin/
 
-ENV PYTHONPATH="/NGStools/MIDAS-1.3.2/midas:${PYTHONPATH}" PATH="/NGStools/MIDAS-1.3.2/scripts:/NGStools/hmmer-3.1b2-linux-intel-x86_64/binaries:/NGStools/vsearch-2.4.3-linux-x86_64/bin:${PATH}"
+ENV PYTHONPATH="/NGStools/MIDAS-1.3.2"
+ENV PATH="/NGStools/MIDAS-1.3.2/scripts:/NGStools/hmmer-3.1b2-linux-intel-x86_64/binaries:/NGStools/vsearch-2.4.3-linux-x86_64/bin:${PATH}"
 
 # Clean
 RUN apt-get remove -y git python-pip wget && apt-get autoclean -y
