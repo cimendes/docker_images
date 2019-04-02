@@ -20,7 +20,3 @@ RUN conda config --add channels defaults && conda config --add channels conda-fo
 # INSTALL GROOT
 RUN conda install -c bioconda groot
 
-# SET UP DP
-RUN groot get
-RUN groot index -i ./arg-annot.90
-
