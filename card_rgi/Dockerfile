@@ -16,6 +16,7 @@ MAINTAINER Finlay Maguire <finlaymaguire@gmail.com>
 
 # get some system essentials
 RUN apt-get update && apt-get install -y wget && conda init bash
+RUN apt-get install procps -y
 
 # install rgi and system dependencies
 RUN conda create --name rgi --channel conda-forge --channel bioconda rgi 
