@@ -58,9 +58,3 @@ WORKDIR /data
 
 # set rgi executable as cmd to allow overriding
 ENTRYPOINT ["conda", "run", "-n", "rgi"]
-
-# move to workdir
-WORKDIR /data/
-
-# set rgi executable as cmd to allow overriding
-CMD ["rgi"]
