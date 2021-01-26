@@ -33,13 +33,16 @@ RUN conda install -c bioconda kraken2 bracken
 WORKDIR /kraken_db
 
 # Standard DB 8GB - for kraken2 and bracken 
+RUN mkdir k2_standard_8gb_20201202
 RUN wget https://genome-idx.s3.amazonaws.com/kraken/k2_standard_8gb_20201202.tar.gz && \
-    tar xf k2_standard_8gb_20201202.tar.gz && rm k2_standard_8gb_20201202.tar.gz
+    tar xf k2_standard_8gb_20201202.tar.gz -C k2_standard_8gb_20201202 && rm k2_standard_8gb_20201202.tar.gz
 
 # 16S RDP 11.5 DB
 RUN wget https://genome-idx.s3.amazonaws.com/kraken/16S_RDP11.5_20200326.tgz && \
     tar xf 16S_RDP11.5_20200326.tgz && rm 16S_RDP11.5_20200326.tgz
 
 ENV KRAKEN2_DB_PATH="/kraken_db:${KRAKEN2_DB_PATH}"
+
+RUN ls
 
 WORKDIR /data/
