@@ -1,5 +1,8 @@
 FROM ubuntu:16.04
-MAINTAINER I Mendes <cimendes@medicina.ulisboa.pt>
+LABEL author="I Mendes"
+LABEL email="cimendes@medicina.ulisboa.pt"
+LABEL name="kraken2"
+LABEL version="2.11"
 
 WORKDIR /NGStools/
 
@@ -24,14 +27,18 @@ ENV PATH="/NGStools/miniconda/bin:$PATH"
 RUN conda config --add channels defaults && conda config --add channels conda-forge && \
     conda config --add channels bioconda
 
-# INSTALL kraken
-RUN conda install -c bioconda kraken2
+# INSTALL kraken & bracken
+RUN conda install -c bioconda kraken2 bracken
 
 WORKDIR /kraken_db
 
-# minikraken DB kraken2 v2 - refseq human,  bacteria, archaea, and viral libraries
-RUN wget ftp://ftp.ccb.jhu.edu/pub/data/kraken2_dbs/minikraken2_v2_8GB_201904_UPDATE.tgz && \
-    tar xf minikraken2_v2_8GB_201904_UPDATE.tgz && rm minikraken2_v2_8GB_201904_UPDATE.tgz
+# Standard DB 8GB - for kraken2 and bracken 
+RUN wget https://genome-idx.s3.amazonaws.com/kraken/k2_standard_8gb_20201202.tar.gz && \
+    tar xf k2_standard_8gb_20201202.tar.gz && rm k2_standard_8gb_20201202.tar.gz
+
+# 16S RDP 11.5 DB
+RUN wget https://genome-idx.s3.amazonaws.com/kraken/16S_RDP11.5_20200326.tgz && \
+    tar xf 16S_RDP11.5_20200326.tgz && rm 16S_RDP11.5_20200326.tgz
 
 ENV KRAKEN2_DB_PATH="/kraken_db:${KRAKEN2_DB_PATH}"
 
