@@ -28,3 +28,6 @@ RUN mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release ..
 RUN cd build && make
 
 ENV PATH /ra/build/bin:$PATH
+
+# PS for nextflow
+RUN apt-get install -y procps

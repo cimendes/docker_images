@@ -20,3 +20,6 @@ RUN conda install -c conda-forge -c bioconda -c defaults flye
 
 # Set up workdir for installation 
 WORKDIR /data
+
+# PS for nextflow
+RUN apt-get install -y procps

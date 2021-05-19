@@ -18,4 +18,5 @@ LABEL maintainer="Inês Mendes <cimendes@medicina.ulisboa.pt>"
 # System essentials
 RUN conda install -c conda-forge -c bioconda -c defaults wtdbg
 
-# Set up work
+# PS for nextflow
+RUN apt-get install -y procps
